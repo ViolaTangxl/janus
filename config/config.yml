@@ -12,3 +12,5 @@ redis:
     size: 10
     network: "tcp"
     key_pairs: ""
+session:
+    max_age: 604800

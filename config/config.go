@@ -6,8 +6,9 @@ import (
 )
 
 type Config struct {
-	Server ServerConfig `yaml:"server"`
-	Redis  RedisConfig  `yaml:"redis"`
+	Server  ServerConfig  `yaml:"server"`
+	Redis   RedisConfig   `yaml:"redis"`
+	Session SessionConfig `yaml:"session"`
 }
 
 // ServerConfig config for server
@@ -26,6 +27,10 @@ type RedisConfig struct {
 	Size       int      `yaml:"size"`
 	Networt    string   `yaml:"network"`
 	KeyPairs   string   `yaml:"key_pairs"`
+}
+
+type SessionConfig struct {
+	MaxAge int `yaml:"max_age"`
 }
 
 func ParseConfig(file string) (*Config, error) {
