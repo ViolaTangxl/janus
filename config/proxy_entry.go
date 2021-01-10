@@ -1,5 +1,11 @@
 package config
 
+import (
+	"io/ioutil"
+
+	"gopkg.in/yaml.v2"
+)
+
 type ProxyConfig struct {
 	Files string `yaml:"files"`
 }
@@ -28,4 +34,43 @@ type Param struct {
 	Rename string `yaml:"rename"`
 	// CustomValue 自定义的参数值，如果 session 中没有存某个值，支持自定义
 	CustomValue interface{} `yaml:"custom_value"`
+}
+
+func ParseProxyEntry(file string) (*EntryConfig, error) {
+	conf := &EntryConfig{}
+
+	proxyDate, err := ioutil.ReadFile(file)
+	if err != nil {
+		return nil, err
+	}
+
+	err = yaml.Unmarshal(proxyDate, &conf)
+	if err != nil {
+		return nil, err
+	}
+
+	// 前置检查 proxyConfig 必填项是否均已填
+	for _, matches := range conf.ProxyEntries {
+		if matches.Name == "" {
+			return nil, ProxyNameIsNil
+		}
+		if matches.Target == "" {
+			return nil, ProxyTargetIsNil
+		}
+		for _, match := range matches.Matches {
+			if match.Path == "" {
+				return nil, ProxyMatchesPathIsNil
+			}
+			if match.Method == "" {
+				return nil, ProxyMatchesMethodIsNil
+			}
+			for _, param := range match.Params {
+				if param.Location == "" {
+					return nil, ProxyMatchesParamLacationIsNil
+				}
+			}
+		}
+	}
+
+	return conf, nil
 }
