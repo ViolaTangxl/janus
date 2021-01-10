@@ -9,6 +9,8 @@ type Config struct {
 	Server  ServerConfig  `yaml:"server"`
 	Redis   RedisConfig   `yaml:"redis"`
 	Session SessionConfig `yaml:"session"`
+	ProxyCfg           ProxyConfig        `yaml:"proxy_config"`
+	ProxyEntries       []ProxyEntry       `yaml:"-"` // 由 proxyCfg.files 指定的子配置文件填充
 }
 
 // ServerConfig config for server
