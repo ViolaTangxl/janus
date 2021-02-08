@@ -1,7 +1,8 @@
 package env
 
 import (
-	"github.com/ViolaTangxl/l-bridge/config"
+	"janus/config"
+
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-contrib/sessions/redis"
 	"github.com/gin-gonic/gin"
