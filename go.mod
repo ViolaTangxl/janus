@@ -1,4 +1,4 @@
-module github.com/ViolaTangxl/l-bridge
+module janus
 
 go 1.14
 
