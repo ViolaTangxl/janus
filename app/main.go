@@ -5,8 +5,8 @@ import (
 	"flag"
 	"path/filepath"
 
-	"janus/config"
-	"janus/env"
+	"github.com/ViolaTangxl/janus/config"
+	"github.com/ViolaTangxl/janus/env"
 
 	"github.com/sirupsen/logrus"
 )
