@@ -2,6 +2,7 @@ package env
 
 import (
 	"github.com/ViolaTangxl/janus/config"
+	"github.com/ViolaTangxl/janus/controllers/middlewares"
 
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-contrib/sessions/redis"
@@ -29,7 +30,12 @@ func InitAppEngine(l *logrus.Logger, cfg *config.Config) (*gin.Engine, error) {
 
 	app.Use(
 		gin.Recovery(),
+		middlewares.GetReqidMiddleware(),
+		middlewares.GetLoggerMiddleware(l),
+		middlewares.GetLogReqMiddleware(l),
+		sessions.Sessions("www", store),
 	)
-
+	config.Global.Cfg = cfg
+	config.Global.Logger = l
 	return app, nil
 }
