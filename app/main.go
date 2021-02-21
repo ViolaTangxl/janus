@@ -34,6 +34,7 @@ func main() {
 		return
 	}
 
+	env.InitRouters(app)
 	err = app.Run(conf.Server.Port)
 	if err != nil {
 		logrus.Errorf("l-bridge service run with err, err: %s", err)
