@@ -1,4 +1,4 @@
-module janus
+module github.com/ViolaTangxl/janus
 
 go 1.14
 

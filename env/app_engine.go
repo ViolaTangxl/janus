@@ -1,7 +1,7 @@
 package env
 
 import (
-	"janus/config"
+	"github.com/ViolaTangxl/janus/config"
 
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-contrib/sessions/redis"
