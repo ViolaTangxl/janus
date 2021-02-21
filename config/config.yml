@@ -1,6 +1,6 @@
 server:
     mode: "test"
-    port: ":21009"
+    port: ":11009"
 
 redis:
     db: 0 # defaults 0
@@ -14,3 +14,5 @@ redis:
     key_pairs: ""
 session:
     max_age: 604800
+proxy_config:
+    files: '../config/proxy_*.yml'
