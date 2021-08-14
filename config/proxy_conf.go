@@ -9,7 +9,7 @@ type ParamLocation string
 const (
 	ParamLocationUrlParam ParamLocation = "url_param"
 	ParamLocationBody     ParamLocation = "body"
-	ParamLocationHeader   ParamLocation = "head"
+	ParamLocationHeader   ParamLocation = "header"
 	ParamLocationUrlPath  ParamLocation = "url_path"
 )
 
