@@ -41,6 +41,8 @@ func main() {
 		return
 	}
 }
+
+// buildProxyEntries 加载多个配置文件
 func buildProxyEntries(conf *config.Config) error {
 	absPath, err := filepath.Abs(conf.ProxyCfg.Files)
 	if err != nil {
